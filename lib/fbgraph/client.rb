@@ -5,9 +5,9 @@ module FBGraph
     attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer , :auth , :logger
 
     def initialize(options = {})
-      @client_id = options[:client_id] || FBGraph.config[:client_id]
-      @secret_id = options[:secret_id] || FBGraph.config[:secret_id]
-      @ca_file = options[:ca_file] || FBGraph.config[:ca_file] || default_ca_file
+      @client_id = options[:client_id] || FBGraph.config["client_id"]
+      @secret_id = options[:secret_id] || FBGraph.config["secret_id"]
+      @ca_file = options[:ca_file] || FBGraph.config["ca_file"] || default_ca_file
       @facebook_uri = options[:facebook_uri] || 'https://graph.facebook.com'
       @consumer = RestClient::Resource.new(@facebook_uri, rest_client_ssl_options)
       @access_token = options.fetch :token, nil
